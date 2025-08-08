@@ -54,7 +54,7 @@ function TextMarqueeBanner() {
         },
     ];
     return (
-        <div className="fixed  z-10 h-10 dark:bg-neutral-800 bg-gray-100 sm:py-1 sm:h-10 lg:py-2 lg:h-14 flex items-center cursor-default ">
+        <div className="sticky  top-0    h-10 dark:bg-neutral-800 bg-gray-100 sm:py-1 sm:h-10 lg:py-2 lg:h-14 flex items-center cursor-default ">
             <Marquee speed={40} gradient={false} pauseOnHover={true}  >
                 {
                     carouselData.map((item) => (

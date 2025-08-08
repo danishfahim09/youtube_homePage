@@ -9,6 +9,7 @@ import SearchDrawer from "@/components/atoms/SearchDrawer"
 import { ArrowLeft, ArrowUpLeft, Clock, Mic, Watch } from "lucide-react"
 import Image from "next/image"
 import Images from "@/constants/Images"
+import HomeTopBanner from "@/components/organisms/HomeTopBanner"
 
 const Home = () => {
   const [toggleMenu, settoggleMenu] = useState(true);
@@ -50,7 +51,8 @@ const Home = () => {
               <SideBare />
             </div>
           )}
-          <div className="w-full overflow-y-auto scroll-smooth">
+          <div className="w-full overflow-y-auto scroll-smooth z-30">
+            <HomeTopBanner />
             <VedioCard />
           </div>
         </div>
