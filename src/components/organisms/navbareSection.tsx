@@ -1,12 +1,12 @@
 'use client'
 import SearchBar from '@/components/atoms/searchBare'
 import {
-  AlignJustify, Bell, EllipsisVertical, LayoutDashboard, Mic, Moon, Sun, UserPen, VideoIcon, CreditCard, Users, BadgeDollarSign, 
-  EyeOff
+  AlignJustify, Bell, EllipsisVertical, LayoutDashboard, Mic, Moon, Sun, UserPen, VideoIcon, CreditCard, Users, BadgeDollarSign, Settings, LogOut,
+  EyeOff, Search
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,15 +15,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Icons } from '@/constants/Icons' 
+import { Icons } from '@/constants/Icons'
 import Images from '@/constants/Images'
 import ThemeToggle from '../ui/ThemeToggle'
 
 interface NavbareProps {
-  toggleSidebar: () => void
+  toggleSidebar: () => void;
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Navbare({ toggleSidebar }: NavbareProps) {
+function Navbare({ toggleSidebar, open, setOpen, }: NavbareProps) {
   const { theme, setTheme } = useTheme()
 
   const notifications = [
@@ -36,7 +38,7 @@ function Navbare({ toggleSidebar }: NavbareProps) {
     },
     {
       id: 2,
-      profileImage:Images.FOOTBALL2,
+      profileImage: Images.FOOTBALL2,
       thumbnail: Images.STADIUM,
       title: "New video from Ramneek Singh 1313 | Emotional Reaction!",
       time: "1 hour ago",
@@ -72,18 +74,17 @@ function Navbare({ toggleSidebar }: NavbareProps) {
     },
     {
       id: 4,
-      label: 'Subscription',
-      icon: BadgeDollarSign,
+      label: 'Setting',
+      icon: Settings,
       href: '/subscription',
     },
     {
       id: 5,
       label: 'Log Out',
-      icon: BadgeDollarSign,
+      icon: LogOut,
       href: '/subscription',
     },
   ]
-
 
 
 
@@ -116,7 +117,8 @@ function Navbare({ toggleSidebar }: NavbareProps) {
     );
   };
   return (
-    <div className='flex justify-between  h-full items-center mx-4'>
+    <div className='flex justify-between  h-full items-center mx-4 relative'>
+
       <div className="flex items-center gap-4">
         <AlignJustify className='w-5 h-5 lg:w-[20px] stroke-[1.5px] lg:h-[18px] hover:text-gray-400 cursor-pointer text-slate-600  dark:text-white' onClick={toggleSidebar} />
         <Image src='/assets/images/Youtube-Logo.png' width={90} height={20} alt='df' className='hidden xs:block w-20 h-5' />
@@ -124,12 +126,15 @@ function Navbare({ toggleSidebar }: NavbareProps) {
       <div className="items-center justify-center gap-1 lg:gap-1 hidden xs:flex">
         <SearchBar />
         <Mic className='text-center stroke-[1.5px] w-6 h-6 p-1 sm:p-1 sm:h-6 hover:text-gray-400 cursor-pointer sm:w-6 md:h-8 lg:h-9 md:w-8  lg:w-9 text-textBase-light dark:text-textBase-dark bg-gray-200 dark:bg-black md:p-2 lg:p-2 rounded-full' />
-<ThemeToggle/>
-         
+        <ThemeToggle />
+
       </div>
       <div className="  gap-2 sm:gap-2 md:gap-3 lg:gap-7 items-center flex">
 
-        <VideoIcon width={22} height={22} className='stroke-[1.5px] hover:text-gray-400  text-textBase-light dark:text-textBase-dark w-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 cursor-pointer  ' />
+        <Search onClick={() => setOpen(true)} width={22} height={22} className='stroke-[1.5px] hover:text-gray-400  text-textBase-light dark:text-textBase-dark w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 cursor-pointer  xs:hidden' />
+
+
+
         <LayoutDashboard width={22} height={22} className='stroke-[1.5px] hover:text-gray-400   text-textBase-light dark:text-textBase-dark   cursor-pointer w-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6  ' />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
