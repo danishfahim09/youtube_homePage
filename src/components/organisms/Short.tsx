@@ -19,6 +19,7 @@ function Shorts() {
       author: 'James Gouse',
       views: '15K Views',
       time: '1 week ago',
+      tags: ['#lahore', '#walledcity', '#androonlahore', '#shorts']
     },
     {
       id: 2,
@@ -29,6 +30,7 @@ function Shorts() {
       author: 'Sarah Johnson',
       views: '32K Views',
       time: '2 days ago',
+      tags: ['#basketball', '#sports', '#shorts']
     },
     {
       id: 3,
@@ -39,6 +41,7 @@ function Shorts() {
       author: 'Sarah Johnson',
       views: '32K Views',
       time: '2 days ago',
+      tags: ['#cat', '#pets', '#shorts']
     },
     {
       id: 4,
@@ -49,6 +52,7 @@ function Shorts() {
       author: 'Quick Code',
       views: '44K Views',
       time: '4 days ago',
+      tags: ['#football', '#sports', '#shorts']
     },
     {
       id: 5,
@@ -59,9 +63,10 @@ function Shorts() {
       author: 'Design Gurus',
       views: '18K Views',
       time: '6 hours ago',
+      tags: ['#css', '#webdesign', '#shorts']
     },
-     
-  ]
+  ];
+
 
   const handleMouseEnter = (id: number) => {
     const video = videoRefs.current[id]
@@ -82,7 +87,7 @@ function Shorts() {
 
 
   return (
-    <div className=''> 
+    <div className=''>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7 w-full p-2">
         {videoCardData.map((item) => {
           return (
@@ -102,25 +107,15 @@ function Shorts() {
                 className="w-full h-[350px] object-cover rounded-md transition-all duration-300"
               />
 
-              <div className="flex flex-row gap-3 mt-3">
-                <div>
-                  <Image
-                    width={36}
-                    height={36}
-                    src={item.avatar}
-                    alt="User avatar"
-                    className="w-9 h-9 object-cover rounded-full"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <h2 className="text-xs font-bold text-black dark:text-white">
-                    {item.title}
-                  </h2>
-                  <p className="text-sm text-gray-700 dark:text-gray-400 mt-1">{item.author}</p>
-                  <p className="text-xs text-gray-500 font-normal dark:text-gray-400">{item.views} • {item.time}</p>
-                </div>
+              <div className="flex">
+                <p className=''>
+                  {
+                    item.tags.map((item) => item
+                    )
+                  }
+                </p>
               </div>
+              <p className="text-xs text-gray-500 font-normal dark:text-gray-400">{item.views}</p>
             </div>
           )
         })}

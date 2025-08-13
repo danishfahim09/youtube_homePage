@@ -1,17 +1,16 @@
 'use client'
 import { useState } from "react"
-import HomeNavbare from "./navbare/Navbare"
-import SideBare from "./sideBare/page"
-import VedioCard from "./VideoCard/page"
+import HomeNavbare from "@/app/(home)/navbare/Navbare"
+import SideBare from "@/app/(home)/sideBare/page"
+import VedioCard from "@/components/organisms/vedioCard"
 import { Sheet } from 'react-modal-sheet';
-import SearchBar from "@/components/atoms/searchBare"
 import SearchDrawer from "@/components/atoms/SearchDrawer"
-import { ArrowLeft, ArrowUpLeft, Clock, Mic, Watch } from "lucide-react"
+import { ArrowLeft, ArrowUpLeft, Clock, Mic, } from "lucide-react"
 import Image from "next/image"
 import Images from "@/constants/Images"
 import HomeTopBanner from "@/components/organisms/HomeTopBanner"
 
-const Home = () => {
+const VideosSidebar = () => {
   const [toggleMenu, settoggleMenu] = useState(true);
   const [isOpen, setOpen] = useState(false);
 
@@ -98,4 +97,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default VideosSidebar

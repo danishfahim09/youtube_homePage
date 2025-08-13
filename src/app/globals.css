@@ -9,6 +9,25 @@ html, body {
   z-index: '20px';
 }
 
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 11px; 
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #212121; /* track color (sidebar background) */
+}
+
+.scrollbar-custom-light::-webkit-scrollbar-track {
+  background: 'white'; /* track color (sidebar background) */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #a6a6a6; /* thumb color (scroll handle) */
+  border-radius: 10px;
+  border: 2px solid #1f2937; /* optional, padding around thumb */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

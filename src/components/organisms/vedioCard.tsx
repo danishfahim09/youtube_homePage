@@ -1,13 +1,25 @@
 'use client'
 
-import HomeTopBanner from '@/components/organisms/HomeTopBanner'
 import Images from '@/constants/Images'
 import videos from '@/constants/Vedios'
-import Image from 'next/image'
+import Image from 'next/image' 
 import React, { useRef } from 'react'
+import { useRouter } from 'next/navigation' 
+
+export interface vedioHub {
+  id: number,
+  src: string,
+  poster: string,
+  avatar: string,
+  title: string,
+  author: string,
+  views: string,
+  time: string,
+}
 
 function VedioCard() {
-  const videoRefs = useRef<Record<number, HTMLVideoElement | null>>({})
+  const videoRefs = useRef<Record<number, HTMLVideoElement | null>>({}) 
+  const router = useRouter()
 
   const videoCardData = [
     {
@@ -99,9 +111,15 @@ function VedioCard() {
     }
   }
 
+  // const router = useRouter()
+  const handleVideoClick = (video: vedioHub) => {
+    localStorage.setItem("selectedVideo", JSON.stringify(video)); // single clicked video
+    localStorage.setItem("allVideos", JSON.stringify(videoCardData)); // all videos array
+    router.push("/videoHub"); // navigate to next page
+  };
 
   return (
-    <div className=''> 
+    <div className=''>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-7 w-full p-2">
         {videoCardData.map((item) => {
           return (
@@ -110,6 +128,7 @@ function VedioCard() {
               className="cursor-pointer rounded-b-sm overflow-hidden group"
               onMouseEnter={() => handleMouseEnter(item.id)}
               onMouseLeave={() => handleMouseLeave(item.id)}
+              onClick={() => handleVideoClick(item)}
             >
               <video
                 ref={(el) => {
